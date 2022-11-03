@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Initial commit">
+    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="GameConfigFileParser, constants and messages refactoring">
+      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definitions/Messages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/models/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/views/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definitions/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definitions/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utilities/GameConfigFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utilities/GameConfigFileParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667322580335</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial commit">
+      <created>1667399294713</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667399294713</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,6 +87,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="GameConfigFileParser, constants and messages refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="GameConfigFileParser, constants and messages refactoring" />
   </component>
 </project>

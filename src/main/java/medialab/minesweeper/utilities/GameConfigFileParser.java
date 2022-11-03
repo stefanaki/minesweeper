@@ -1,24 +1,68 @@
 package medialab.minesweeper.utilities;
 
+import medialab.minesweeper.exceptions.*;
+
 import java.nio.file.InvalidPathException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameConfigFileParser extends FileParser {
-    private final Map<String, String> config = new HashMap<>();
+import static medialab.minesweeper.definitions.Constants.GridSizes;
 
-    public GameConfigFileParser(String fileName) throws InvalidPathException {
+public class GameConfigFileParser extends FileParser {
+    private final Map<String, Integer> gameConfig = new HashMap<>();
+
+    public GameConfigFileParser(String fileName) throws InvalidPathException, InvalidDescriptionException, InvalidValueException {
         super(fileName);
         parseGameConfig();
     }
 
-    private void parseGameConfig() {
-        config.put("key1", "val1");
-        config.put("key2", "val2");
-        config.put("key3", "val3");
+    private void parseGameConfig() throws InvalidValueException, InvalidDescriptionException {
+        ArrayList<String> data;
+        int difficulty, numOfNukes, maxTime, hasSupernuke;
+
+        try {
+            if ((data = this.getLines()).size() != 4)
+                throw new Exception();
+
+            difficulty = Integer.parseInt(data.get(0));
+            numOfNukes = Integer.parseInt(data.get(1));
+            maxTime = Integer.parseInt(data.get(2));
+            hasSupernuke = Integer.parseInt(data.get(3));
+        } catch (Exception n) {
+            throw new InvalidDescriptionException("invalidConfigFile");
+        }
+
+        switch (difficulty) {
+            case 1:
+                if (numOfNukes < 9 || numOfNukes > 11)
+                    throw new InvalidValueException("invalidNumOfNukes");
+                if (maxTime < 120 || maxTime > 180)
+                    throw new InvalidValueException("invalidMaxTime");
+                if (hasSupernuke != 0)
+                    throw new InvalidValueException("invalidSupernuke");
+                break;
+            case 2:
+                if (numOfNukes < 35 || numOfNukes > 45)
+                    throw new InvalidValueException("invalidNumOfNukes");
+                if (maxTime < 240 || maxTime > 360)
+                    throw new InvalidValueException("invalidMaxTime");
+                if (hasSupernuke != 0 && hasSupernuke != 1)
+                    throw new InvalidValueException("invalidSupernuke");
+                break;
+            default:
+                throw new InvalidValueException("invalidDifficulty");
+        }
+
+        gameConfig.put("difficulty", difficulty);
+        gameConfig.put("numOfNukes", numOfNukes);
+        gameConfig.put("maxTime", maxTime);
+        gameConfig.put("hasSupernuke", hasSupernuke);
+        gameConfig.put("gridWidth", difficulty == 1 ? GridSizes.get(1)[0] : GridSizes.get(1)[1]);
+        gameConfig.put("gridHeight", difficulty == 1 ? GridSizes.get(2)[0] : GridSizes.get(2)[1]);
     }
 
-    public Map<String, String> getGameConfig() {
-        return config;
+    public Map<String, Integer> getGameConfig() {
+        return gameConfig;
     }
 }

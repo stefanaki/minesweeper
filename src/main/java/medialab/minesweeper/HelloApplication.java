@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import medialab.minesweeper.utilities.GameConfigFileParser;
 
 import java.io.IOException;
 
@@ -18,6 +19,13 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        // launch();
+
+        try {
+            GameConfigFileParser p = new GameConfigFileParser("/home/giorgis/Desktop/examples/level_2_example.txt");
+            System.out.println(p.getGameConfig().toString());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
