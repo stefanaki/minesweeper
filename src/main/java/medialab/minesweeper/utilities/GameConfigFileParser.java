@@ -58,8 +58,8 @@ public class GameConfigFileParser extends FileParser {
         gameConfig.put("numOfNukes", numOfNukes);
         gameConfig.put("maxTime", maxTime);
         gameConfig.put("hasSupernuke", hasSupernuke);
-        gameConfig.put("gridWidth", difficulty == 1 ? GridSizes.get(1)[0] : GridSizes.get(1)[1]);
-        gameConfig.put("gridHeight", difficulty == 1 ? GridSizes.get(2)[0] : GridSizes.get(2)[1]);
+        gameConfig.put("gridWidth", GridSizes.get(difficulty)[0]);
+        gameConfig.put("gridHeight", GridSizes.get(difficulty)[1]);
     }
 
     public Map<String, Integer> getGameConfig() {
