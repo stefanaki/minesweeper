@@ -60,6 +60,7 @@ public class GameConfigFileParser extends FileParser {
         gameConfig.put("hasSupernuke", hasSupernuke);
         gameConfig.put("gridWidth", GridSizes.get(difficulty)[0]);
         gameConfig.put("gridHeight", GridSizes.get(difficulty)[1]);
+        //
     }
 
     public Map<String, Integer> getGameConfig() {
