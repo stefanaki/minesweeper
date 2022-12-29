@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Renamed modules">
+    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Implemented game model class">
       <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MinesweeperController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/MinesweeperModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definitions/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definitions/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/exceptions/InvalidDescriptionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/exception/InvalidDescriptionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/exceptions/InvalidValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/exception/InvalidValueException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/models/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utilities/FileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/FileParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utilities/GameConfigFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/views/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667479454953</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Renamed modules">
+      <created>1672321674549</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672321674549</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,7 +119,8 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="GameConfigFileParser, constants and messages refactoring" />
     <MESSAGE value="Renamed modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="Renamed modules" />
+    <MESSAGE value="Implemented game model class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented game model class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
