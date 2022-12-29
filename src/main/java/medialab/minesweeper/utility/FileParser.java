@@ -1,4 +1,4 @@
-package medialab.minesweeper.utilities;
+package medialab.minesweeper.utility;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

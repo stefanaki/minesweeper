@@ -1,7 +1,7 @@
-package medialab.minesweeper.exceptions;
+package medialab.minesweeper.exception;
 
 public class InvalidValueException extends Exception {
-    InvalidValueException() {
+    public InvalidValueException() {
         super("Invalid Game Scenario Configuration Values");
     }
 

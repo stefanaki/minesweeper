@@ -1,4 +1,4 @@
-package medialab.minesweeper.definitions;
+package medialab.minesweeper.definition;
 
 import java.util.HashMap;
 import java.util.Map;

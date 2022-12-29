@@ -1,4 +1,4 @@
-package medialab.minesweeper.exceptions;
+package medialab.minesweeper.exception;
 
 public class InvalidDescriptionException extends Exception {
     public InvalidDescriptionException() {
