@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Implemented game model class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MinesweeperController.java" afterDir="false" />
+    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Progress on board view and controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/MinesweeperModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/MinesweeperModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MinesweeperController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +44,6 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/opt/scenebuilder/bin/SceneBuilder&quot;
   }
 }</component>
@@ -115,7 +108,28 @@
       <option name="project" value="LOCAL" />
       <updated>1672321796195</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactoring and fixing what I've done so far">
+      <created>1673041022527</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673041022527</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Refactoring and fixing what I've done so far">
+      <created>1673041132078</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673041132078</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Progress on board view and controller">
+      <created>1673048245779</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673048245779</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,7 +148,9 @@
     <MESSAGE value="GameConfigFileParser, constants and messages refactoring" />
     <MESSAGE value="Renamed modules" />
     <MESSAGE value="Implemented game model class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented game model class" />
+    <MESSAGE value="Refactoring and fixing what I've done so far" />
+    <MESSAGE value="Progress on board view and controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Progress on board view and controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
-public class MinesweeperModel implements Model {
+public class GameBoardModel implements Model {
     /**
      * The 2D array representing the game board. Each element in the array represents the status of a cell on the board.
      */
@@ -62,7 +62,7 @@ public class MinesweeperModel implements Model {
      *
      * @throws IOException if an I/O error occurs while writing to the file
      */
-    public MinesweeperModel(int rows, int columns, int nukesCount, boolean hasSupernuke) throws IOException {
+    public GameBoardModel(int rows, int columns, int nukesCount, boolean hasSupernuke) throws IOException {
         this.rows = rows;
         this.columns = columns;
         this.nukesCount = nukesCount;
@@ -109,7 +109,7 @@ public class MinesweeperModel implements Model {
      * @param column the column of the cell to check
      * @return true if the cell at the specified row and column is a nuke, false otherwise
      */
-    private boolean isNuke(int row, int column) {
+    public boolean isNuke(int row, int column) {
         return nukes[row][column] != NukeType.NONE;
     }
 
