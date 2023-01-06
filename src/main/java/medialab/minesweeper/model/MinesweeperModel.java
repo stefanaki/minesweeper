@@ -1,16 +1,13 @@
 package medialab.minesweeper.model;
 
 import medialab.minesweeper.definition.Constants.CellStatus;
-import medialab.minesweeper.definition.Constants.NukeCellType;
+import medialab.minesweeper.definition.Constants.NukeType;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
-
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 
 public class MinesweeperModel implements Model {
     /**
@@ -22,7 +19,7 @@ public class MinesweeperModel implements Model {
      * The 2D array representing the nukes on the game board. Each element in the array represents the type of nuke (if any) at
      * the corresponding position on the game board.
      */
-    private final NukeCellType[][] nukes;
+    private final NukeType[][] nukes;
 
     /**
      * The number of rows on the game board.
@@ -54,9 +51,6 @@ public class MinesweeperModel implements Model {
      */
     private int userMoveCount;
 
-    private final BooleanProperty modelChanged;
-
-
     /**
      * Constructs a new MinesweeperModel with the specified number of rows, columns, and nukes. If hasSupernuke is true, one of
      * the nukes is a supernuke.
@@ -75,15 +69,16 @@ public class MinesweeperModel implements Model {
         this.hasSupernuke = hasSupernuke;
         this.gameOver = false;
         this.gameBoard = new CellStatus[rows][columns];
-        this.nukes = new NukeCellType[rows][columns];
+        this.nukes = new NukeType[rows][columns];
         this.userMoveCount = 0;
 
-        Arrays.fill(gameBoard, CellStatus.CLOSED);
-        Arrays.fill(nukes, NukeCellType.NONE);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                gameBoard[i][j] = CellStatus.CLOSED;
+                nukes[i][j] = NukeType.NONE;
+            }
+        }
         placeNukes();
-
-        modelChanged = new SimpleBooleanProperty(false);
-
         saveBoard("/home/giorgis/Desktop/nuketest/mines.txt");
     }
 
@@ -96,12 +91,12 @@ public class MinesweeperModel implements Model {
         while (nukesPlaced < nukesCount) {
             int row = random.nextInt(rows);
             int column = random.nextInt(columns);
-            if (nukes[row][column] == NukeCellType.NONE) {
+            if (nukes[row][column] == NukeType.NONE) {
                 // place a mine at the randomly selected position
-                nukes[row][column] = NukeCellType.NUKE;
+                nukes[row][column] = NukeType.NUKE;
                 nukesPlaced++;
                 if (hasSupernuke && nukesPlaced == nukesCount - 1) {
-                    nukes[row][column] = NukeCellType.SUPERNUKE;
+                    nukes[row][column] = NukeType.SUPERNUKE;
                 }
             }
         }
@@ -115,7 +110,7 @@ public class MinesweeperModel implements Model {
      * @return true if the cell at the specified row and column is a nuke, false otherwise
      */
     private boolean isNuke(int row, int column) {
-        return nukes[row][column] != NukeCellType.NONE;
+        return nukes[row][column] != NukeType.NONE;
     }
 
     /**
@@ -132,14 +127,13 @@ public class MinesweeperModel implements Model {
             return;
         }
 
+        // Reveal cell
+        gameBoard[row][column] = CellStatus.REVEALED;
         if (isNuke(row, column)) {
-            gameBoard[row][column] = CellStatus.NUKE;
             gameOver = true;
             return;
         }
 
-        // Reveal cell
-        gameBoard[row][column] = CellStatus.REVEALED;
         int adjacentNukes = getAdjacentNukes(row, column);
         if (adjacentNukes == 0) {
             // no adjacent mines - reveal all adjacent cells
@@ -152,7 +146,7 @@ public class MinesweeperModel implements Model {
             }
         }
 
-        if (nukes[row][column] == NukeCellType.SUPERNUKE && userMoveCount < 4) {
+        if (nukes[row][column] == NukeType.SUPERNUKE && userMoveCount < 4) {
             for (int i = 0; i < rows; i++) {
                 revealCell(i, column);
             }
@@ -161,7 +155,6 @@ public class MinesweeperModel implements Model {
             }
         }
         userMoveCount++;
-        modelChanged.set(true);
     }
 
     /**
@@ -188,16 +181,15 @@ public class MinesweeperModel implements Model {
      * @throws IOException if an I/O error occurs while writing to the file
      */
     private void saveBoard(String fileName) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8));
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                writer.write(i + "," + j + ",");
-                if (nukes[i][j] == NukeCellType.NUKE) {
-                    writer.write(i + "," + j + "," + "0");
-                } else if (nukes[i][j] == NukeCellType.SUPERNUKE) {
-                    writer.write(i + "," + j + "," + "1");
+                if (nukes[i][j] == NukeType.NUKE) {
+                    writer.write(i + "," + j + "," + "0" + "\n");
+                } else if (nukes[i][j] == NukeType.SUPERNUKE) {
+                    writer.write(i + "," + j + "," + "1" + "\n");
                 }
-                writer.newLine();
+
             }
         }
         writer.close();
@@ -230,7 +222,7 @@ public class MinesweeperModel implements Model {
     public boolean hasWon() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (gameBoard[i][j] == CellStatus.CLOSED && nukes[i][j] == NukeCellType.NONE) {
+                if (gameBoard[i][j] == CellStatus.CLOSED && nukes[i][j] == NukeType.NONE) {
                     return false;
                 }
             }

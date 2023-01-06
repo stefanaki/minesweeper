@@ -23,10 +23,6 @@ public class GameConfigFileParser extends FileParser {
     public GameConfigFileParser(String fileName) throws InvalidPathException, InvalidDescriptionException, InvalidValueException {
         super(fileName);
         parseGameConfig();
-
-        Exception e = new InvalidValueException();
-        InvalidDescriptionException e2 = (InvalidDescriptionException) e;
-
     }
 
     /**

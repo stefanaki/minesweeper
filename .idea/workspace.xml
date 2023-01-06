@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Implemented game model class">
       <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MinesweeperController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/MinesweeperModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/MinesweeperModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/MinesweeperModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672321674549</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implemented game model class">
+      <created>1672321796195</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672321796195</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

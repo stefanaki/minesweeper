@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Constants {
-    public static enum Level {
+    public enum Level {
         BEGINNER,
         ADVANCED
     }
@@ -17,11 +17,10 @@ public class Constants {
     public enum CellStatus {
         CLOSED,
         FLAGGED,
-        REVEALED,
-        NUKE
+        REVEALED
     }
 
-    public enum NukeCellType {
+    public enum NukeType {
         NONE,
         NUKE,
         SUPERNUKE

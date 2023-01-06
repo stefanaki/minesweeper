@@ -1,4 +1,4 @@
-package medialab.minesweeper;
+package medialab.minesweeper.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
