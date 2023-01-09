@@ -114,6 +114,17 @@ public class GameBoardModel implements Model {
     }
 
     /**
+     * Returns true if the cell at the specified row and column is the supernuke, false otherwise.
+     *
+     * @param row the row of the cell to check
+     * @param column the column of the cell to check
+     * @return true if the cell at the specified row and column the supernuke, false otherwise
+     */
+    public boolean isSupernuke(int row, int column) {
+        return nukes[row][column] == NukeType.SUPERNUKE;
+    }
+
+    /**
      * Reveals the cell at the specified row and column on the game board. If the cell is a nuke, the game is over and the gameOver
      * variable is updated to reflect this. If the cell is not a nuke, it is revealed and all adjacent cells are also revealed
      * if they do not have any adjacent nukes. If the cell is a supernuke and the player has made less than 4 moves, all
@@ -241,8 +252,6 @@ public class GameBoardModel implements Model {
         return gameBoard[row][column];
     }
 
-
-    public CellStatus[][] getBoard() { return gameBoard; }
     public boolean isGameOver() { return gameOver; }
 
     /**

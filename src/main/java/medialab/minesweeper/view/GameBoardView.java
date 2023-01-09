@@ -5,8 +5,8 @@ import javafx.scene.layout.GridPane;
 import medialab.minesweeper.model.GameBoardModel;
 
 public class GameBoardView implements View {
-    private GameBoardModel model;
-    private GridPane root;
+    private final GameBoardModel model;
+    private final GridPane root;
 
     public GameBoardView(GameBoardModel model) {
         this.model = model;

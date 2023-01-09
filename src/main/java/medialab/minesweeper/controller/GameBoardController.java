@@ -6,8 +6,8 @@ import medialab.minesweeper.model.GameBoardModel;
 import medialab.minesweeper.view.GameBoardView;
 
 public class GameBoardController implements Controller {
-    private GameBoardModel model;
-    private GameBoardView view;
+    private final GameBoardModel model;
+    private final GameBoardView view;
 
     public GameBoardController(GameBoardModel model, GameBoardView view) {
         this.model = model;

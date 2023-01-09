@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Progress on board view and controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MinesweeperController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameBoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameBoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673048245779</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Progress on board view and controller">
+      <created>1673075781111</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673075781111</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
