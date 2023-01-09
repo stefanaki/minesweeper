@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Progress on board view and controller">
+      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/main-menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/Bootstrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameBoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameBoardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +43,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/opt/scenebuilder/bin/SceneBuilder&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/opt/scenebuilder/bin/SceneBuilder"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java" />
@@ -139,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673075781111</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Progress on board view and controller">
+      <created>1673277235389</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673277235389</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,5 +179,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/minesweeper$Bootstrap.ic" NAME="Bootstrap Coverage Results" MODIFIED="1673286537579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>medialab.minesweeper.*</FILTER>
+    </SUITE>
   </component>
 </project>

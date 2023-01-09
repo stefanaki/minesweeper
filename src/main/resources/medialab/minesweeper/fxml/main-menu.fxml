@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medialab.minesweeper.controller.MainMenuController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="Application">
+                    <items>
+                        <MenuItem fx:id="menuItemCreate" text="Create" />
+                        <MenuItem fx:id="menuItemLoad" text="Load" />
+                        <MenuItem fx:id="menuItemStart" text="Start" />
+                        <MenuItem fx:id="menuItemExit" text="Exit" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+</BorderPane>

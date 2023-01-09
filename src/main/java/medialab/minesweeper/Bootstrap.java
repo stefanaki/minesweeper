@@ -1,8 +1,13 @@
 package medialab.minesweeper;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import medialab.minesweeper.controller.GameBoardController;
 import medialab.minesweeper.exception.InvalidDescriptionException;
 import medialab.minesweeper.exception.InvalidValueException;
@@ -32,12 +37,18 @@ public class Bootstrap extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/main-menu.fxml"));
+
+        // Add the game board view to the center of the root layout
+        BorderPane rootLayout = loader.load();
+        rootLayout.setCenter(view.getRoot());
 
         // Set the scene and show the stage
-        Scene scene = new Scene(view.getRoot());
+        Scene scene = new Scene(rootLayout);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Minesweeper");
+        primaryStage.setTitle("Medialab Minesweeper");
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }

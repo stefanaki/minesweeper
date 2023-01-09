@@ -1,5 +1,6 @@
 package medialab.minesweeper.view;
 
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import medialab.minesweeper.model.GameBoardModel;
@@ -20,6 +21,8 @@ public class GameBoardView implements View {
                 root.add(cell, j, i);
             }
         }
+
+        root.setPadding(new Insets(30, 30, 30, 30));
     }
 
     public void updateView() {
