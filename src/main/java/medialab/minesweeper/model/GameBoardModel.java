@@ -118,7 +118,7 @@ public class GameBoardModel implements Model {
      *
      * @param row the row of the cell to check
      * @param column the column of the cell to check
-     * @return true if the cell at the specified row and column the supernuke, false otherwise
+     * @return true if the cell at the specified row and column is the supernuke, false otherwise
      */
     public boolean isSupernuke(int row, int column) {
         return nukes[row][column] == NukeType.SUPERNUKE;
