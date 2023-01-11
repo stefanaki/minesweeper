@@ -19,6 +19,11 @@ public class GameBoardController implements Controller {
                 int finalJ = j;
                 cell.setOnMouseClicked(event -> {
                     MouseButton e = event.getButton();
+
+                    if (model.isGameOver()) {
+                        return;
+                    }
+
                     switch (e) {
                         case PRIMARY:
                             // Open the cell if left-clicked

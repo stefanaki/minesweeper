@@ -11,10 +11,10 @@
             <menus>
                 <Menu text="Application">
                     <items>
-                        <MenuItem fx:id="menuItemCreate" text="Create" />
-                        <MenuItem fx:id="menuItemLoad" text="Load" />
-                        <MenuItem fx:id="menuItemStart" text="Start" />
-                        <MenuItem fx:id="menuItemExit" text="Exit" />
+                        <MenuItem fx:id="menuItemCreate" onAction="#onMenuItemCreateClicked" text="Create" />
+                        <MenuItem fx:id="menuItemLoad" onAction="#onMenuItemLoadClicked" text="Load" />
+                        <MenuItem fx:id="menuItemStart" onAction="#onMenuItemStartClicked" text="Start" />
+                        <MenuItem fx:id="menuItemExit" onAction="#onMenuItemExitClicked" text="Exit" />
                     </items>
                 </Menu>
             </menus>

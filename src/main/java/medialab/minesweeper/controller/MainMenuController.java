@@ -1,7 +1,15 @@
 package medialab.minesweeper.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import java.io.IOException;
 
 public class MainMenuController {
     @FXML
@@ -17,7 +25,16 @@ public class MainMenuController {
     private MenuItem menuItemExit;
 
     @FXML
-    private void onMenuItemCreateClicked() {
+    private void onMenuItemCreateClicked() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/create-game.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("prospathw sklira");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
 
     }
 
@@ -33,6 +50,6 @@ public class MainMenuController {
 
     @FXML
     private void onMenuItemExitClicked() {
-        // Exit the application
+        System.exit(0);
     }
 }
