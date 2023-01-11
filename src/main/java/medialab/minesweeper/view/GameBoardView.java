@@ -37,38 +37,47 @@ public class GameBoardView implements View {
             for (int j = 0; j < model.getColumns(); j++) {
                 Button cell = (Button) root.getChildren().get(i * model.getColumns() + j);
                 ImageView imgView;
-                switch (model.getCellStatus(i, j)) {
+                String imgPath = "images/";
 
+                switch (model.getCellStatus(i, j)) {
                     case REVEALED:
                         int adjacentMines = model.getAdjacentNukes(i, j);
-                        imgView = new ImageView(new Image(Main.class.getResourceAsStream("images/open" + adjacentMines + ".gif")));
+                        imgPath += "open" + adjacentMines + ".gif";
                         break;
                     case FLAGGED:
-                        imgView = new ImageView(new Image(Main.class.getResourceAsStream("images/flagged.gif")));
+                        imgPath += "flagged.gif";
                         break;
                     default:
-                        imgView = new ImageView(new Image(Main.class.getResourceAsStream("images/blank.gif")));
+                        imgPath += "blank.gif";
                         break;
                 }
 
-                if (model.isGameOver() && model.isNuke(i, j)) {
-                    switch (model.getCellStatus(i, j)) {
-                        case REVEALED:
-                            imgView = new ImageView(new Image(Main.class.getResourceAsStream("images/mineclicked.gif")));
-                            break;
-                        case FLAGGED:
-                            imgView = new ImageView(new Image(Main.class.getResourceAsStream("images/misflagged.gif")));
-                            break;
-                        default:
-                            imgView = new ImageView(new Image(Main.class.getResourceAsStream("images/mine.gif")));
-                            break;
-                    }
-                }
-
+                imgView = new ImageView(new Image(Main.class.getResourceAsStream(imgPath)));
                 imgView.setFitWidth(30);
                 imgView.setFitHeight(30);
                 cell.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
                 cell.setGraphic(imgView);
+
+                imgPath = "images/";
+                if (model.isGameOver()) {
+                    switch (model.getCellStatus(i, j)) {
+                        case REVEALED:
+                            int adjacentMines = model.getAdjacentNukes(i, j);
+                            imgPath += model.isNuke(i, j) ? "mineclicked.gif" : "open" + adjacentMines + ".gif";
+                            break;
+                        case FLAGGED:
+                            imgPath += model.isNuke(i, j) ? "mine.gif" : "misflagged.gif";
+                            break;
+                        case CLOSED:
+                            imgPath += model.isNuke(i, j) ? "mine.gif" : "blank.gif";
+                    }
+
+                    imgView = new ImageView(new Image(Main.class.getResourceAsStream(imgPath)));
+                    imgView.setFitWidth(30);
+                    imgView.setFitHeight(30);
+                    cell.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    cell.setGraphic(imgView);
+                }
             }
         }
     }

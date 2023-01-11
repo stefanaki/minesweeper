@@ -48,7 +48,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Medialab Minesweeper");
         primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/mine.gif")));
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/smileywon.gif")));
         primaryStage.show();
     }
 }
