@@ -2,6 +2,7 @@ package medialab.minesweeper.model;
 
 import medialab.minesweeper.definition.Constants.CellStatus;
 import medialab.minesweeper.definition.Constants.NukeType;
+import medialab.minesweeper.utility.GameConfig;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -52,21 +53,17 @@ public class GameBoardModel implements Model {
     private int userMoveCount;
 
     /**
-     * Constructs a new MinesweeperModel with the specified number of rows, columns, and nukes. If hasSupernuke is true, one of
-     * the nukes is a supernuke.
+     * Constructs a new MinesweeperModel with the specified game configuration object.
      *
-     * @param rows the number of rows on the game board
-     * @param columns the number of columns on the game board
-     * @param nukesCount the number of nukes on the game board
-     * @param hasSupernuke a flag indicating whether the game board has a supernuke
+     * @param gameConfig The game configuration object
      *
      * @throws IOException if an I/O error occurs while writing to the file
      */
-    public GameBoardModel(int rows, int columns, int nukesCount, boolean hasSupernuke) throws IOException {
-        this.rows = rows;
-        this.columns = columns;
-        this.nukesCount = nukesCount;
-        this.hasSupernuke = hasSupernuke;
+    public GameBoardModel(GameConfig gameConfig) throws IOException {
+        this.rows = gameConfig.getGridHeight();
+        this.columns = gameConfig.getGridWidth();
+        this.nukesCount = gameConfig.getNumOfNukes();
+        this.hasSupernuke = gameConfig.getHasSupernuke();
         this.gameOver = false;
         this.gameBoard = new CellStatus[rows][columns];
         this.nukes = new NukeType[rows][columns];

@@ -10,11 +10,11 @@ import medialab.minesweeper.controller.GameBoardController;
 import medialab.minesweeper.exception.InvalidDescriptionException;
 import medialab.minesweeper.exception.InvalidValueException;
 import medialab.minesweeper.model.GameBoardModel;
+import medialab.minesweeper.utility.GameConfig;
 import medialab.minesweeper.utility.GameConfigFileParser;
 import medialab.minesweeper.view.GameBoardView;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class Main extends Application {
     private GameBoardModel model;
@@ -23,9 +23,9 @@ public class Main extends Application {
 
     public Main() throws IOException, InvalidValueException, InvalidDescriptionException {
         GameConfigFileParser gameConfigParser = new GameConfigFileParser("/home/giorgis/Desktop/examples/level_2_example.txt");
-        Map<String, Integer> config = gameConfigParser.getGameConfig();
+        GameConfig config = gameConfigParser.getGameConfig();
         System.out.println(gameConfigParser.getGameConfig());
-        model = new GameBoardModel(config.get("gridHeight"), config.get("gridWidth"), config.get("numOfNukes"), config.get("hasSupernuke") == 1);
+        model = new GameBoardModel(config);
         view = new GameBoardView(model);
         controller = new GameBoardController(model, view);
     }
