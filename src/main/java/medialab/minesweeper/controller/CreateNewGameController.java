@@ -1,8 +1,12 @@
 package medialab.minesweeper.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import medialab.minesweeper.definition.Constants;
+import medialab.minesweeper.definition.Messages;
+import medialab.minesweeper.exception.InvalidValueException;
+import medialab.minesweeper.utility.GameConfig;
 
 public class CreateNewGameController {
     @FXML
@@ -12,7 +16,10 @@ public class CreateNewGameController {
     private RadioButton easyDifficulty;
 
     @FXML
-    private RadioButton hardDifficulty;
+    private RadioButton advancedDifficulty;
+
+    @FXML
+    private CheckBox hasSupernukeCheckbox;
 
     @FXML
     private TextField gameTimeField;
@@ -21,9 +28,18 @@ public class CreateNewGameController {
     private TextField nukesField;
 
     @FXML
+    private Button createButton;
+
+    @FXML ToggleGroup difficultyGroup;
+
+    @FXML
     public void initialize() {
-        // This method is called when the FXML file is loaded.
-        // You can initialize any variables or other objects here.
+    difficultyGroup = new ToggleGroup();
+
+
+
+        easyDifficulty.setToggleGroup(difficultyGroup);
+        advancedDifficulty.setToggleGroup(difficultyGroup);
     }
 
     public int getScenarioId() {
@@ -31,5 +47,27 @@ public class CreateNewGameController {
     }
 
     public void initializeGame() {
+    }
+
+    @FXML
+    public void onCreateGameClicked() throws InvalidValueException {
+        try {
+            String scenarioId = this.scenarioIdField.getText();
+            int selectedDifficulty = difficultyGroup.getSelectedToggle() == easyDifficulty ? 1 : 2;
+            boolean hasSupernuke = hasSupernukeCheckbox.isSelected();
+            int maxTime = Integer.valueOf(gameTimeField.getText());
+            int numOfNukes = Integer.valueOf(nukesField.getText());
+            int gridWidth = Constants.GridSizes.get(selectedDifficulty)[0];
+            int gridHeight = Constants.GridSizes.get(selectedDifficulty)[1];
+
+            GameConfig newGameConfig = new GameConfig(selectedDifficulty, numOfNukes, maxTime, hasSupernuke, gridHeight, gridWidth);
+            // ....
+            Platform.exit();
+
+        } catch (InvalidValueException e) {
+            System.out.println(Messages.configExceptionMessages.get(e.getMessage()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

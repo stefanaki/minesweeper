@@ -42,7 +42,7 @@ public class GameConfig {
      * @param gridWidth    The width of the grid in the game
      * @throws InvalidValueException if the input values are invalid
      */
-    GameConfig(int difficulty, int numOfNukes, int maxTime, boolean hasSupernuke, int gridHeight, int gridWidth) throws InvalidValueException {
+    public GameConfig(int difficulty, int numOfNukes, int maxTime, boolean hasSupernuke, int gridHeight, int gridWidth) throws InvalidValueException {
         switch (difficulty) {
             case 1:
                 if (numOfNukes < 9 || numOfNukes > 11)

@@ -17,6 +17,12 @@
                         <MenuItem fx:id="menuItemExit" onAction="#onMenuItemExitClicked" text="Exit" />
                     </items>
                 </Menu>
+                <Menu text="Details">
+                    <items>
+                        <MenuItem fx:id="menuItemRounds" onAction="#onMenuItemCreateClicked" text="Rounds" />
+                        <MenuItem fx:id="menuItemSolution" onAction="#onMenuItemLoadClicked" text="Solution" />
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>

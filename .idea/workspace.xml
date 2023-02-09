@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="OG assets working">
-      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfig.java" afterDir="false" />
+    <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="`GameConfig` class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/CreateNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/CreateNewGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/main-menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673444483663</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="`GameConfig` class">
+      <created>1675958494416</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675958494416</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,7 +216,8 @@
     <MESSAGE value="Refactoring and fixing what I've done so far" />
     <MESSAGE value="Progress on board view and controller" />
     <MESSAGE value="OG assets working" />
-    <option name="LAST_COMMIT_MESSAGE" value="OG assets working" />
+    <MESSAGE value="`GameConfig` class" />
+    <option name="LAST_COMMIT_MESSAGE" value="`GameConfig` class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
