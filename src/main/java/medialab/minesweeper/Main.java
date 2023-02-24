@@ -4,30 +4,57 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import medialab.minesweeper.controller.GameBoardController;
-import medialab.minesweeper.exception.InvalidDescriptionException;
-import medialab.minesweeper.exception.InvalidValueException;
 import medialab.minesweeper.model.GameBoardModel;
 import medialab.minesweeper.utility.GameConfig;
-import medialab.minesweeper.utility.GameConfigFileParser;
 import medialab.minesweeper.view.GameBoardView;
 
 import java.io.IOException;
 
 public class Main extends Application {
-    private GameBoardModel model;
-    private GameBoardView view;
-    private GameBoardController controller;
+    static boolean isGameBoardSet = false;
+    static GameBoardModel model;
+    static GameBoardView view;
+    static GameBoardController controller;
 
-    public Main() throws IOException, InvalidValueException, InvalidDescriptionException {
-        GameConfigFileParser gameConfigParser = new GameConfigFileParser("/home/giorgis/Desktop/examples/level_2_example.txt");
-        GameConfig config = gameConfigParser.getGameConfig();
-        System.out.println(gameConfigParser.getGameConfig());
-        model = new GameBoardModel(config);
-        view = new GameBoardView(model);
-        controller = new GameBoardController(model, view);
+    static Stage primaryStage;
+
+    public static void setGameBoard(GameConfig gameConfig) {
+        try {
+            model = new GameBoardModel(gameConfig);
+            view = new GameBoardView(model);
+            controller = new GameBoardController(model, view);
+            isGameBoardSet = true;
+
+            updatePrimaryStageView(primaryStage);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void updatePrimaryStageView(Stage primaryStage) throws IOException {
+        // Load the main menu view
+        FXMLLoader mainMenuLoader = new FXMLLoader(Main.class.getResource("fxml/main-menu.fxml"));
+        BorderPane rootLayout = mainMenuLoader.load();
+
+        if (!isGameBoardSet) {
+            // Load the initial view and add it to a new layout container
+            FXMLLoader welcomeLoader = new FXMLLoader(Main.class.getResource("fxml/welcome-view.fxml"));
+            AnchorPane welcomeView = welcomeLoader.load();
+
+            rootLayout.setCenter(welcomeView);
+        } else {
+            rootLayout.setCenter(view.getRoot());
+        }
+
+        // Set the scene and show the stage
+        Scene scene = new Scene(rootLayout);
+        primaryStage.setScene(scene);
+        primaryStage.sizeToScene();
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
@@ -35,20 +62,12 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/main-menu.fxml"));
+    public void start(Stage stage) throws IOException {
+        primaryStage = stage;
 
-        // Add the game board view to the center of the root layout
-        BorderPane rootLayout = loader.load();
-        rootLayout.setCenter(view.getRoot());
-        rootLayout.setStyle("-fx-background-color: c0c0c0;");
-
-        // Set the scene and show the stage
-        Scene scene = new Scene(rootLayout);
-        primaryStage.setScene(scene);
         primaryStage.setTitle("Medialab Minesweeper");
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/smileywon.gif")));
-        primaryStage.show();
+        updatePrimaryStageView(stage);
     }
 }

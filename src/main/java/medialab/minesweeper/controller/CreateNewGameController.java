@@ -1,10 +1,11 @@
 package medialab.minesweeper.controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import medialab.minesweeper.definition.Constants;
-import medialab.minesweeper.definition.Messages;
+import javafx.scene.layout.Region;
+import javafx.stage.Stage;
+import medialab.minesweeper.Main;
+import medialab.minesweeper.definition.*;
 import medialab.minesweeper.exception.InvalidValueException;
 import medialab.minesweeper.utility.GameConfig;
 
@@ -30,23 +31,16 @@ public class CreateNewGameController {
     @FXML
     private Button createButton;
 
-    @FXML ToggleGroup difficultyGroup;
+    @FXML
+    ToggleGroup difficultyGroup;
+
+    GameConfig gameConfig;
 
     @FXML
     public void initialize() {
-    difficultyGroup = new ToggleGroup();
-
-
-
+        difficultyGroup = new ToggleGroup();
         easyDifficulty.setToggleGroup(difficultyGroup);
         advancedDifficulty.setToggleGroup(difficultyGroup);
-    }
-
-    public int getScenarioId() {
-        return Integer.parseInt(scenarioIdField.getText());
-    }
-
-    public void initializeGame() {
     }
 
     @FXML
@@ -60,14 +54,24 @@ public class CreateNewGameController {
             int gridWidth = Constants.GridSizes.get(selectedDifficulty)[0];
             int gridHeight = Constants.GridSizes.get(selectedDifficulty)[1];
 
-            GameConfig newGameConfig = new GameConfig(selectedDifficulty, numOfNukes, maxTime, hasSupernuke, gridHeight, gridWidth);
-            // ....
-            Platform.exit();
+            gameConfig = new GameConfig(selectedDifficulty, numOfNukes, maxTime, hasSupernuke, gridHeight, gridWidth);
 
+            Main.setGameBoard(gameConfig);
+            Stage stage = (Stage) this.createButton.getScene().getWindow();
+            stage.close();
         } catch (InvalidValueException e) {
-            System.out.println(Messages.configExceptionMessages.get(e.getMessage()));
+            String errorMessage = Messages.configExceptionMessages.get(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, errorMessage);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.showAndWait();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "All the fields are required.");
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+            alert.showAndWait();
         }
+    }
+
+    public GameConfig getGameConfig() {
+        return this.gameConfig;
     }
 }

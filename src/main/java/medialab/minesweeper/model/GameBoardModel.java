@@ -1,10 +1,13 @@
 package medialab.minesweeper.model;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import medialab.minesweeper.definition.Constants.CellStatus;
 import medialab.minesweeper.definition.Constants.NukeType;
 import medialab.minesweeper.utility.GameConfig;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -76,7 +79,7 @@ public class GameBoardModel implements Model {
             }
         }
         placeNukes();
-        saveBoard("/home/giorgis/Desktop/nuketest/mines.txt");
+        saveBoard();
     }
 
     /**
@@ -185,11 +188,19 @@ public class GameBoardModel implements Model {
     /**
      * Saves the current state of the game board to a file at the specified file path.
      *
-     * @param fileName the file path to save the game board to
      * @throws IOException if an I/O error occurs while writing to the file
      */
-    private void saveBoard(String fileName) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, StandardCharsets.UTF_8));
+    private void saveBoard() throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Board");
+        fileChooser.setInitialFileName("mines.txt");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text Files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        Stage stage = new Stage();
+        File file = fileChooser.showSaveDialog(stage);
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (nukes[i][j] == NukeType.NUKE) {

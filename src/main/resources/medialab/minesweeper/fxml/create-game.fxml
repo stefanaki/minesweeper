@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="461.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medialab.minesweeper.controller.CreateNewGameController">
+   <children>
+      <VBox alignment="CENTER" layoutX="35.0" layoutY="23.0" prefHeight="394.0" prefWidth="294.0" spacing="20.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create Game">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="52.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/smileywon.gif" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="70.0" prefWidth="295.0">
+               <children>
+                  <Label text="Scenario ID" />
+                  <TextField fx:id="scenarioIdField" prefHeight="43.0" prefWidth="343.0" promptText="Scenario ID" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="200.0" spacing="30.0">
+               <children>
+                  <RadioButton fx:id="easyDifficulty" mnemonicParsing="false" text="Easy" />
+                  <RadioButton fx:id="advancedDifficulty" mnemonicParsing="false" text="Advanced" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <CheckBox fx:id="hasSupernukeCheckbox" mnemonicParsing="false" text="Supernuke" />
+            <HBox alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="0.0" prefWidth="295.0" spacing="20.0" VBox.vgrow="SOMETIMES">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label text="Number of Nukes" />
+                        <TextField fx:id="nukesField" prefHeight="43.0" prefWidth="200.0" promptText="Number of Nukes" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Maximum Play Time" />
+                        <TextField fx:id="gameTimeField" prefHeight="43.0" prefWidth="200.0" promptText="Time (seconds)" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button fx:id="createButton" layoutX="104.0" layoutY="420.0" mnemonicParsing="false" onAction="#onCreateGameClicked" prefHeight="26.0" prefWidth="156.0" text="Create and Play!" />
+   </children>
+</Pane>

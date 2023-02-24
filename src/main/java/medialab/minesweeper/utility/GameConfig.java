@@ -46,17 +46,17 @@ public class GameConfig {
         switch (difficulty) {
             case 1:
                 if (numOfNukes < 9 || numOfNukes > 11)
-                    throw new InvalidValueException("invalidNumOfNukes");
+                    throw new InvalidValueException("invalidNumOfNukes1");
                 if (maxTime < 120 || maxTime > 180)
-                    throw new InvalidValueException("invalidMaxTime");
+                    throw new InvalidValueException("invalidMaxTime1");
                 if (hasSupernuke)
-                    throw new InvalidValueException("invalidSupernuke");
+                    throw new InvalidValueException("invalidSupernuke1");
                 break;
             case 2:
                 if (numOfNukes < 35 || numOfNukes > 45)
-                    throw new InvalidValueException("invalidNumOfNukes");
+                    throw new InvalidValueException("invalidNumOfNukes2");
                 if (maxTime < 240 || maxTime > 360)
-                    throw new InvalidValueException("invalidMaxTime");
+                    throw new InvalidValueException("invalidMaxTime2");
                 break;
             default:
                 throw new InvalidValueException("invalidDifficulty");
