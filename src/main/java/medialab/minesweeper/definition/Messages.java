@@ -11,5 +11,6 @@ public class Messages {
         put("invalidMaxTime2", "Invalid value for maximum play time. On advanced difficulty, choose a value between 240 and 360 seconds.");
         put("invalidNumOfNukes2", "Invalid value for number of nukes. On easy difficulty, choose a value between 35 and 45.");
         put("invalidConfigFile", "Invalid configuration file");
+        put("scenarioIdEmpty", "Scenario ID cannot be empty");
     }};
 }

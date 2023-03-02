@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6588dfa8-0001-4e1c-a821-ac5bce106539" name="Changes" comment="Create new game view and GameConfig class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/PreviousRoundsModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/PreviousRound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameStateInfoView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/PreviousRoundsView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/CreateNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/CreateNewGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/GameBoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/controller/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/definition/Messages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/model/GameBoardModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/utility/GameConfigFileParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameBoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/GameBoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/medialab/minesweeper/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/create-game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/create-game.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/main-menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/welcome-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/medialab/minesweeper/fxml/welcome-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +64,15 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/giorgis/minesweeper/src/main/java/medialab/minesweeper/view&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/giorgis/IdeaProjects/minesweeper/src/main/java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -98,6 +116,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1667320757076</updated>
+      <workItem from="1677600927440" duration="158000" />
+      <workItem from="1677601100607" duration="46000" />
+      <workItem from="1677601160671" duration="88000" />
+      <workItem from="1677602691088" duration="12000" />
+      <workItem from="1677608528995" duration="580000" />
+      <workItem from="1677616525258" duration="2019000" />
+      <workItem from="1677663056661" duration="3772000" />
+      <workItem from="1677666885627" duration="111000" />
+      <workItem from="1677677378007" duration="6838000" />
+      <workItem from="1677698494763" duration="1000" />
+      <workItem from="1677701494826" duration="145000" />
+      <workItem from="1677756626741" duration="6240000" />
+      <workItem from="1677765605379" duration="2315000" />
+      <workItem from="1677777341204" duration="6934000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1667322580335</created>
@@ -207,6 +239,9 @@
     <option name="localTasksCounter" value="16" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -239,6 +274,10 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/minesweeper$Bootstrap.ic" NAME="Bootstrap Coverage Results" MODIFIED="1673286537579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

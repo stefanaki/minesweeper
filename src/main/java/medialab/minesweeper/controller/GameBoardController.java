@@ -20,7 +20,7 @@ public class GameBoardController implements Controller {
                 cell.setOnMouseClicked(event -> {
                     MouseButton e = event.getButton();
 
-                    if (model.isGameOver()) {
+                    if (model.isGameOver() || !model.isGameStarted()) {
                         return;
                     }
 

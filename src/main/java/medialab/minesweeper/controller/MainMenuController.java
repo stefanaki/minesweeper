@@ -7,18 +7,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import medialab.minesweeper.Main;
 import medialab.minesweeper.definition.Messages;
 import medialab.minesweeper.exception.*;
+import medialab.minesweeper.model.PreviousRoundsModel;
 import medialab.minesweeper.utility.GameConfig;
 import medialab.minesweeper.utility.GameConfigFileParser;
+import medialab.minesweeper.view.PreviousRoundsView;
 
 import java.io.File;
 import java.io.IOException;
 
-public class MainMenuController {
+public class MainMenuController implements Controller {
     @FXML
     private MenuItem menuItemCreate;
 
@@ -84,11 +87,30 @@ public class MainMenuController {
 
     @FXML
     private void onMenuItemStartClicked() {
-        // Start the game
+        Main.startGame();
     }
 
     @FXML
     private void onMenuItemExitClicked() {
         System.exit(0);
+    }
+
+    @FXML
+    private void onMenuItemRoundsClicked() {
+        Stage stage = new Stage();
+
+        VBox previousRoundsView = new PreviousRoundsView().getRoot();
+        Scene scene = new Scene(previousRoundsView);
+        stage.setResizable(true);
+        stage.setTitle("Previous Rounds");
+        stage.setScene(scene);
+        stage.setWidth(600);
+        stage.showAndWait();
+    }
+
+    @FXML
+    private void onMenuItemSolutionClicked() {
+        Main.getGameBoardModel().stopGame();
+        Main.getGameBoardView().updateView();
     }
 }

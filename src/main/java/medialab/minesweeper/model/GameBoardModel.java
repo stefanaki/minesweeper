@@ -48,7 +48,12 @@ public class GameBoardModel implements Model {
     /**
      * A flag indicating whether the game is over.
      */
-    private boolean gameOver;
+    private boolean isGameOver;
+
+    /**
+     * A flag indicating whether the game has been started.
+     */
+    private boolean isGameStarted;
 
     /**
      * The number of moves made by the player.
@@ -56,21 +61,36 @@ public class GameBoardModel implements Model {
     private int userMoveCount;
 
     /**
+     * The maximum available playing time for the player.
+     */
+    private int maxTime;
+
+    private long startTime;
+
+    private boolean isTimeUp;
+
+    private GameConfig gameConfig;
+
+    /**
      * Constructs a new MinesweeperModel with the specified game configuration object.
      *
      * @param gameConfig The game configuration object
-     *
      * @throws IOException if an I/O error occurs while writing to the file
      */
     public GameBoardModel(GameConfig gameConfig) throws IOException {
+        this.gameConfig = gameConfig;
         this.rows = gameConfig.getGridHeight();
         this.columns = gameConfig.getGridWidth();
         this.nukesCount = gameConfig.getNumOfNukes();
         this.hasSupernuke = gameConfig.getHasSupernuke();
-        this.gameOver = false;
+        this.isGameOver = false;
+        this.isGameStarted = false;
         this.gameBoard = new CellStatus[rows][columns];
         this.nukes = new NukeType[rows][columns];
         this.userMoveCount = 0;
+        this.maxTime = gameConfig.getMaxTime();
+        this.isTimeUp = false;
+        this.startTime = -1;
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
@@ -105,7 +125,7 @@ public class GameBoardModel implements Model {
     /**
      * Returns true if the cell at the specified row and column is a nuke, false otherwise.
      *
-     * @param row the row of the cell to check
+     * @param row    the row of the cell to check
      * @param column the column of the cell to check
      * @return true if the cell at the specified row and column is a nuke, false otherwise
      */
@@ -116,7 +136,7 @@ public class GameBoardModel implements Model {
     /**
      * Returns true if the cell at the specified row and column is the supernuke, false otherwise.
      *
-     * @param row the row of the cell to check
+     * @param row    the row of the cell to check
      * @param column the column of the cell to check
      * @return true if the cell at the specified row and column is the supernuke, false otherwise
      */
@@ -130,7 +150,7 @@ public class GameBoardModel implements Model {
      * if they do not have any adjacent nukes. If the cell is a supernuke and the player has made less than 4 moves, all
      * cells in the same row and column as the supernuke are also revealed.
      *
-     * @param row the row of the cell to be revealed
+     * @param row    the row of the cell to be revealed
      * @param column the column of the cell to be revealed
      */
     public void revealCell(int row, int column) {
@@ -141,7 +161,7 @@ public class GameBoardModel implements Model {
         // Reveal cell
         gameBoard[row][column] = CellStatus.REVEALED;
         if (isNuke(row, column)) {
-            gameOver = true;
+            isGameOver = true;
             return;
         }
 
@@ -172,7 +192,7 @@ public class GameBoardModel implements Model {
      * Flags or unflags the cell at the specified row and column on the game board. If the cell is closed, it is flagged. If
      * the cell is flagged, the flag is removed.
      *
-     * @param row the row of the cell to be flagged or unflagged
+     * @param row    the row of the cell to be flagged or unflagged
      * @param column the column of the cell to be flagged or unflagged
      */
     public void flagCell(int row, int column) {
@@ -217,7 +237,7 @@ public class GameBoardModel implements Model {
     /**
      * Returns the number of nukes adjacent to the cell at the specified row and column on the game board.
      *
-     * @param row the row of the cell to check
+     * @param row    the row of the cell to check
      * @param column the column of the cell to check
      * @return the number of nukes adjacent to the cell at the specified row and column
      */
@@ -252,7 +272,7 @@ public class GameBoardModel implements Model {
     /**
      * Returns the status of the cell at the specified row and column on the game board.
      *
-     * @param row the row of the cell to check
+     * @param row    the row of the cell to check
      * @param column the column of the cell to check
      * @return the status of the cell at the specified row and column
      */
@@ -260,28 +280,36 @@ public class GameBoardModel implements Model {
         return gameBoard[row][column];
     }
 
-    public boolean isGameOver() { return gameOver; }
+    public boolean isGameOver() {
+        return isGameOver;
+    }
 
     /**
      * Returns the number of rows on the game board.
      *
      * @return the number of rows on the game board
      */
-    public int getRows() { return rows; }
+    public int getRows() {
+        return rows;
+    }
 
     /**
      * Returns the number of columns on the game board.
      *
      * @return the number of columns on the game board
      */
-    public int getColumns() { return columns; }
+    public int getColumns() {
+        return columns;
+    }
 
     /**
      * Returns the number of nukes on the game board.
      *
      * @return the number of nukes on the game board
      */
-    public int getNukesCount() { return nukesCount; }
+    public int getNukesCount() {
+        return nukesCount;
+    }
 
 
     /**
@@ -291,5 +319,55 @@ public class GameBoardModel implements Model {
      */
     public boolean hasSupernuke() {
         return this.hasSupernuke;
+    }
+
+    /**
+     * Returns true if the player has started the game, false otherwise
+     *
+     * @return true if the player has started the game, false otherwise
+     */
+    public boolean isGameStarted() {
+        return this.isGameStarted;
+    }
+
+    public int getMarkedCellsCount() {
+        int totalMarkedCells = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                if (gameBoard[i][j] == CellStatus.FLAGGED) {
+                    totalMarkedCells++;
+                }
+            }
+        }
+
+        return totalMarkedCells;
+    }
+    public void startGame() {
+        this.isGameStarted = true;
+        this.startTime = System.currentTimeMillis();
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public int getMaxTime() {
+        return this.maxTime;
+    }
+
+    public void stopGame() {
+        this.isGameOver = true;
+        this.isTimeUp = true;
+
+        logRoundToPreviousRounds();
+    }
+
+    public void logRoundToPreviousRounds() {
+        PreviousRoundsModel.addNewRound(this.gameConfig, this.hasWon(), this.userMoveCount);
+    }
+
+    public GameConfig getGameConfig() {
+        return this.gameConfig;
     }
 }

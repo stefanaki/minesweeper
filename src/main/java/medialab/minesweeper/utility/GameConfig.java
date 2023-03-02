@@ -7,6 +7,11 @@ import medialab.minesweeper.exception.InvalidValueException;
  */
 public class GameConfig {
     /**
+     * The ID of the game scenario
+     */
+    final String scenarioId;
+
+    /**
      * The difficulty level of the game
      */
     final int difficulty;
@@ -42,7 +47,11 @@ public class GameConfig {
      * @param gridWidth    The width of the grid in the game
      * @throws InvalidValueException if the input values are invalid
      */
-    public GameConfig(int difficulty, int numOfNukes, int maxTime, boolean hasSupernuke, int gridHeight, int gridWidth) throws InvalidValueException {
+    public GameConfig(String scenarioId, int difficulty, int numOfNukes, int maxTime, boolean hasSupernuke, int gridHeight, int gridWidth) throws InvalidValueException {
+        if (scenarioId.isEmpty()) {
+            throw new InvalidValueException("scenarioIdEmpty");
+        }
+
         switch (difficulty) {
             case 1:
                 if (numOfNukes < 9 || numOfNukes > 11)
@@ -62,6 +71,7 @@ public class GameConfig {
                 throw new InvalidValueException("invalidDifficulty");
         }
 
+        this.scenarioId = scenarioId;
         this.difficulty = difficulty;
         this.numOfNukes = numOfNukes;
         this.maxTime = maxTime;
@@ -123,5 +133,14 @@ public class GameConfig {
      */
     public int getGridWidth() {
         return gridWidth;
+    }
+
+    /**
+     * Returns the ID of the game scenario.
+     *
+     * @return the ID of the game scenario
+     */
+    public String getScenarioId() {
+        return scenarioId;
     }
 }

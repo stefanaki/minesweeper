@@ -5,7 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medialab.minesweeper.controller.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="medialab.minesweeper.controller.MainMenuController">
     <top>
         <MenuBar>
             <menus>
@@ -19,8 +19,8 @@
                 </Menu>
                 <Menu text="Details">
                     <items>
-                        <MenuItem fx:id="menuItemRounds" onAction="#onMenuItemCreateClicked" text="Rounds" />
-                        <MenuItem fx:id="menuItemSolution" onAction="#onMenuItemLoadClicked" text="Solution" />
+                        <MenuItem fx:id="menuItemRounds" onAction="#onMenuItemRoundsClicked" text="Rounds" />
+                        <MenuItem fx:id="menuItemSolution" onAction="#onMenuItemSolutionClicked" text="Solution" />
                     </items>
                 </Menu>
             </menus>

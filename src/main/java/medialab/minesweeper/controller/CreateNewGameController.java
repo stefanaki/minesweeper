@@ -9,7 +9,7 @@ import medialab.minesweeper.definition.*;
 import medialab.minesweeper.exception.InvalidValueException;
 import medialab.minesweeper.utility.GameConfig;
 
-public class CreateNewGameController {
+public class CreateNewGameController implements Controller {
     @FXML
     private TextField scenarioIdField;
 
@@ -54,7 +54,7 @@ public class CreateNewGameController {
             int gridWidth = Constants.GridSizes.get(selectedDifficulty)[0];
             int gridHeight = Constants.GridSizes.get(selectedDifficulty)[1];
 
-            gameConfig = new GameConfig(selectedDifficulty, numOfNukes, maxTime, hasSupernuke, gridHeight, gridWidth);
+            gameConfig = new GameConfig(scenarioId, selectedDifficulty, numOfNukes, maxTime, hasSupernuke, gridHeight, gridWidth);
 
             Main.setGameBoard(gameConfig);
             Stage stage = (Stage) this.createButton.getScene().getWindow();

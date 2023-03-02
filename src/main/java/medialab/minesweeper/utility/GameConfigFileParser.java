@@ -4,6 +4,7 @@ import medialab.minesweeper.exception.*;
 
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import static medialab.minesweeper.definition.Constants.GridSizes;
 
@@ -45,7 +46,8 @@ public class GameConfigFileParser extends FileParser {
             throw new InvalidDescriptionException("invalidConfigFile");
         }
 
-        this.gameConfig = new GameConfig(difficulty, numOfNukes, maxTime, hasSupernuke == 1, GridSizes.get(difficulty)[0], GridSizes.get(difficulty)[1]);
+        String scenarioId = getScenarioId();
+        this.gameConfig = new GameConfig(scenarioId, difficulty, numOfNukes, maxTime, hasSupernuke == 1, GridSizes.get(difficulty)[0], GridSizes.get(difficulty)[1]);
     }
 
     /**
@@ -53,5 +55,11 @@ public class GameConfigFileParser extends FileParser {
      */
     public GameConfig getGameConfig() {
         return gameConfig;
+    }
+
+    public String getScenarioId() {
+        String input = Long.toString(System.currentTimeMillis());
+        UUID uuid = UUID.nameUUIDFromBytes(input.getBytes());
+        return uuid.toString();
     }
 }
