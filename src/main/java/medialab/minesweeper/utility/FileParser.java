@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileParser {
-    private final Path filePath;
     private final static Charset encoding = StandardCharsets.UTF_8;
+    private final Path filePath;
 
     public FileParser(String fileName) throws InvalidPathException {
         this.filePath = Paths.get(fileName);

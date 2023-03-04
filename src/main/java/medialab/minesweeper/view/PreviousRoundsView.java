@@ -8,16 +8,14 @@ import medialab.minesweeper.model.PreviousRoundsModel;
 import medialab.minesweeper.utility.GameConfig;
 import medialab.minesweeper.utility.PreviousRound;
 
-import java.util.ArrayList;
-
-public class PreviousRoundsView {
-    private final ObservableList<String> items = FXCollections.observableArrayList();
-    private VBox root;
+public class PreviousRoundsView implements View {
+    private final VBox root;
 
     public PreviousRoundsView() {
         this.root = new VBox();
 
         // create a ListView to display the data
+        ObservableList<String> items = FXCollections.observableArrayList();
         ListView<String> listView = new ListView<>(items);
 
         // add items to the ListView
@@ -31,9 +29,9 @@ public class PreviousRoundsView {
             log += userWon ? "WON " : "LOST ";
             log += config.getScenarioId() + ": ";
             log += config.getDifficulty() == 1 ? "(EASY) " : "(ADVANCED) ";
-            log += Integer.toString(config.getGridHeight()) + "*" + Integer.toString(config.getGridWidth()) + " ";
-            log += "Mines " + Integer.toString(config.getNumOfNukes()) + " ";
-            log += "Moves " + Integer.toString(userMoveCount);
+            log += config.getGridHeight() + "*" + config.getGridWidth() + " ";
+            log += "Mines " + config.getNumOfNukes() + " ";
+            log += "Moves " + userMoveCount;
             items.add(log);
         }
 

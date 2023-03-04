@@ -5,15 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import medialab.minesweeper.Main;
 import medialab.minesweeper.definition.Messages;
-import medialab.minesweeper.exception.*;
-import medialab.minesweeper.model.PreviousRoundsModel;
+import medialab.minesweeper.exception.InvalidDescriptionException;
+import medialab.minesweeper.exception.InvalidValueException;
 import medialab.minesweeper.utility.GameConfig;
 import medialab.minesweeper.utility.GameConfigFileParser;
 import medialab.minesweeper.view.PreviousRoundsView;
@@ -22,23 +21,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class MainMenuController implements Controller {
-    @FXML
-    private MenuItem menuItemCreate;
-
-    @FXML
-    private MenuItem menuItemLoad;
-
-    @FXML
-    private MenuItem menuItemStart;
-
-    @FXML
-    private MenuItem menuItemExit;
-
-    @FXML
-    private MenuItem menuItemRounds;
-
-    @FXML
-    private MenuItem menuItemSolution;
 
     @FXML
     private void onMenuItemCreateClicked() {

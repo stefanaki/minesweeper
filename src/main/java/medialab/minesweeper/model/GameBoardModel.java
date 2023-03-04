@@ -13,15 +13,20 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
+/**
+ * The GameBoardModel class represents the model of the Minesweeper game board.
+ * It contains information about the game board and the state of the game.
+ */
 public class GameBoardModel implements Model {
     /**
-     * The 2D array representing the game board. Each element in the array represents the status of a cell on the board.
+     * The 2D array representing the game board.
+     * Each element in the array represents the status of a cell on the board.
      */
     private final CellStatus[][] gameBoard;
 
     /**
-     * The 2D array representing the nukes on the game board. Each element in the array represents the type of nuke (if any) at
-     * the corresponding position on the game board.
+     * The 2D array representing the nukes on the game board.
+     * Each element in the array represents the type of nuke (if any) at the corresponding position on the game board.
      */
     private final NukeType[][] nukes;
 
@@ -34,42 +39,42 @@ public class GameBoardModel implements Model {
      * The number of columns on the game board.
      */
     private final int columns;
-
-    /**
-     * The number of nukes on the game board.
-     */
-    private final int nukesCount;
-
     /**
      * A flag indicating whether the game board has a supernuke.
      */
     private final boolean hasSupernuke;
-
+    /**
+     * The maximum available playing time for the player.
+     */
+    private final int maxTime;
+    /**
+     * The game configuration object.
+     */
+    private final GameConfig gameConfig;
+    /**
+     * The number of nukes on the game board.
+     */
+    private int nukesCount;
     /**
      * A flag indicating whether the game is over.
      */
     private boolean isGameOver;
-
     /**
      * A flag indicating whether the game has been started.
      */
     private boolean isGameStarted;
-
     /**
      * The number of moves made by the player.
      */
     private int userMoveCount;
-
     /**
-     * The maximum available playing time for the player.
+     * The UNIX timestamp when the player starts the round.
      */
-    private int maxTime;
-
     private long startTime;
-
+    /**
+     * A flag indicating whether the player lost the round by time exhaustion.
+     */
     private boolean isTimeUp;
-
-    private GameConfig gameConfig;
 
     /**
      * Constructs a new MinesweeperModel with the specified game configuration object.
@@ -145,15 +150,16 @@ public class GameBoardModel implements Model {
     }
 
     /**
-     * Reveals the cell at the specified row and column on the game board. If the cell is a nuke, the game is over and the gameOver
-     * variable is updated to reflect this. If the cell is not a nuke, it is revealed and all adjacent cells are also revealed
-     * if they do not have any adjacent nukes. If the cell is a supernuke and the player has made less than 4 moves, all
-     * cells in the same row and column as the supernuke are also revealed.
+     * Reveals the cell at the specified row and column on the game board.
+     * If the cell is a nuke, the game is over and the gameOver variable is updated to reflect this.
+     * If the cell is not a nuke, it is revealed and all adjacent cells are also revealed,
+     * if they do not have any adjacent nukes.
      *
-     * @param row    the row of the cell to be revealed
-     * @param column the column of the cell to be revealed
+     * @param row                 the row of the cell to be revealed
+     * @param column              the column of the cell to be revealed
+     * @param isInitiatedByPlayer whether the cell revelation was initiated by the player or recursively
      */
-    public void revealCell(int row, int column) {
+    public void revealCell(int row, int column, boolean isInitiatedByPlayer) {
         if (gameBoard[row][column] != CellStatus.CLOSED) {
             return;
         }
@@ -171,26 +177,21 @@ public class GameBoardModel implements Model {
             for (int i = row - 1; i <= row + 1; i++) {
                 for (int j = column - 1; j <= column + 1; j++) {
                     if (i >= 0 && i < rows && j >= 0 && j < columns && !(i == row && j == column)) {
-                        revealCell(i, j);
+                        revealCell(i, j, false);
                     }
                 }
             }
         }
 
-        if (nukes[row][column] == NukeType.SUPERNUKE && userMoveCount < 4) {
-            for (int i = 0; i < rows; i++) {
-                revealCell(i, column);
-            }
-            for (int j = 0; j < columns; j++) {
-                revealCell(row, j);
-            }
-        }
-        userMoveCount++;
+        if (isInitiatedByPlayer) userMoveCount++;
     }
 
     /**
-     * Flags or unflags the cell at the specified row and column on the game board. If the cell is closed, it is flagged. If
-     * the cell is flagged, the flag is removed.
+     * Flags or unflags the cell at the specified row and column on the game board.
+     * If the cell is closed, it is flagged. If the newly flagged cell is the supernuke,
+     * all the cells that belong in the same row and column with the supernuke
+     * are modified as empty cells, and they are also revealed.
+     * If the cell is flagged, the flag is removed.
      *
      * @param row    the row of the cell to be flagged or unflagged
      * @param column the column of the cell to be flagged or unflagged
@@ -199,9 +200,36 @@ public class GameBoardModel implements Model {
         if (gameBoard[row][column] == CellStatus.CLOSED) {
             // flag the cell if it is closed
             gameBoard[row][column] = CellStatus.FLAGGED;
+
+            if (isSupernuke(row, column) && userMoveCount <= 4) {
+                disableSupernukeCells(row, column);
+            }
         } else if (gameBoard[row][column] == CellStatus.FLAGGED) {
             // remove the flag if the cell is flagged
             gameBoard[row][column] = CellStatus.CLOSED;
+        }
+    }
+
+    /**
+     * Disables all the cells that belong in the same row and column as the supernuke.
+     * Removes the nuke from the cells and marks them as revealed.
+     *
+     * @param row    The row of the cell that contains the supernuke.
+     * @param column The column of the cell that contains the supernuke.
+     */
+    private void disableSupernukeCells(int row, int column) {
+        for (int i = 0; i < rows; i++) {
+            if (nukes[i][column] != NukeType.NONE) nukesCount--;
+
+            nukes[i][column] = NukeType.NONE;
+            gameBoard[i][column] = CellStatus.REVEALED;
+        }
+
+        for (int j = 0; j < columns; j++) {
+            if (nukes[row][j] != NukeType.NONE) nukesCount--;
+
+            nukes[row][j] = NukeType.NONE;
+            gameBoard[row][j] = CellStatus.REVEALED;
         }
     }
 
@@ -330,6 +358,11 @@ public class GameBoardModel implements Model {
         return this.isGameStarted;
     }
 
+    /**
+     * Returns the number of marked cells on the board.
+     *
+     * @return the number of cells on the board that have been marked by the player
+     */
     public int getMarkedCellsCount() {
         int totalMarkedCells = 0;
 
@@ -343,19 +376,37 @@ public class GameBoardModel implements Model {
 
         return totalMarkedCells;
     }
+
+    /**
+     * Starts the round of the game.
+     */
     public void startGame() {
         this.isGameStarted = true;
         this.startTime = System.currentTimeMillis();
     }
 
+    /**
+     * Returns the UNIX timestamp of when the player started the round.
+     *
+     * @return the UNIX timestamp of when the player started the round
+     */
     public long getStartTime() {
         return startTime;
     }
 
+    /**
+     * Returns the maximum available playing time in seconds.
+     *
+     * @return the maximum available playing time in seconds
+     */
     public int getMaxTime() {
         return this.maxTime;
     }
 
+
+    /**
+     * Stops the round if the time is up, and logs the game result to the previously completed rounds.
+     */
     public void stopGame() {
         this.isGameOver = true;
         this.isTimeUp = true;
@@ -363,10 +414,18 @@ public class GameBoardModel implements Model {
         logRoundToPreviousRounds();
     }
 
+    /**
+     * Stores the completed game's result to the previously completed rounds.
+     */
     public void logRoundToPreviousRounds() {
         PreviousRoundsModel.addNewRound(this.gameConfig, this.hasWon(), this.userMoveCount);
     }
 
+    /**
+     * Returns the game configuration object.
+     *
+     * @return the game configuration object
+     */
     public GameConfig getGameConfig() {
         return this.gameConfig;
     }

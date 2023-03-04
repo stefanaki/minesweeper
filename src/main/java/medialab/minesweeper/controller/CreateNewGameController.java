@@ -5,36 +5,29 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import medialab.minesweeper.Main;
-import medialab.minesweeper.definition.*;
+import medialab.minesweeper.definition.Constants;
+import medialab.minesweeper.definition.Messages;
 import medialab.minesweeper.exception.InvalidValueException;
 import medialab.minesweeper.utility.GameConfig;
 
 public class CreateNewGameController implements Controller {
     @FXML
+    ToggleGroup difficultyGroup;
+    GameConfig gameConfig;
+    @FXML
     private TextField scenarioIdField;
-
     @FXML
     private RadioButton easyDifficulty;
-
     @FXML
     private RadioButton advancedDifficulty;
-
     @FXML
     private CheckBox hasSupernukeCheckbox;
-
     @FXML
     private TextField gameTimeField;
-
     @FXML
     private TextField nukesField;
-
     @FXML
     private Button createButton;
-
-    @FXML
-    ToggleGroup difficultyGroup;
-
-    GameConfig gameConfig;
 
     @FXML
     public void initialize() {
@@ -44,13 +37,13 @@ public class CreateNewGameController implements Controller {
     }
 
     @FXML
-    public void onCreateGameClicked() throws InvalidValueException {
+    public void onCreateGameClicked() {
         try {
             String scenarioId = this.scenarioIdField.getText();
             int selectedDifficulty = difficultyGroup.getSelectedToggle() == easyDifficulty ? 1 : 2;
             boolean hasSupernuke = hasSupernukeCheckbox.isSelected();
-            int maxTime = Integer.valueOf(gameTimeField.getText());
-            int numOfNukes = Integer.valueOf(nukesField.getText());
+            int maxTime = Integer.parseInt(gameTimeField.getText());
+            int numOfNukes = Integer.parseInt(nukesField.getText());
             int gridWidth = Constants.GridSizes.get(selectedDifficulty)[0];
             int gridHeight = Constants.GridSizes.get(selectedDifficulty)[1];
 
@@ -69,9 +62,5 @@ public class CreateNewGameController implements Controller {
             alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
             alert.showAndWait();
         }
-    }
-
-    public GameConfig getGameConfig() {
-        return this.gameConfig;
     }
 }

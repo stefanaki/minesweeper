@@ -1,10 +1,10 @@
 package medialab.minesweeper.utility;
 
 public class PreviousRound {
-    private GameConfig gameConfig;
-    private boolean userWon;
+    private final GameConfig gameConfig;
+    private final boolean userWon;
 
-    private int userMoveCount;
+    private final int userMoveCount;
 
     public PreviousRound(GameConfig gameConfig, boolean userWon, int userMoveCount) {
         this.gameConfig = gameConfig;

@@ -27,7 +27,7 @@ public class GameBoardController implements Controller {
                     switch (e) {
                         case PRIMARY:
                             // Open the cell if left-clicked
-                            model.revealCell(finalI, finalJ);
+                            model.revealCell(finalI, finalJ, true);
                             if (model.isGameOver()) {
                                 // End the game if the cell contains a mine
                                 cell.setText("Game Over");

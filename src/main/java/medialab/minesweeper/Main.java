@@ -93,6 +93,14 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static GameBoardModel getGameBoardModel() {
+        return gameBoardModel;
+    }
+
+    public static GameBoardView getGameBoardView() {
+        return gameBoardView;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         primaryStage = stage;
@@ -100,13 +108,5 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/smileywon.gif")));
         updatePrimaryScene(primaryStage);
-    }
-
-    public static GameBoardModel getGameBoardModel() {
-        return gameBoardModel;
-    }
-
-    public static GameBoardView getGameBoardView() {
-        return gameBoardView;
     }
 }

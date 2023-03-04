@@ -1,6 +1,7 @@
 package medialab.minesweeper.utility;
 
-import medialab.minesweeper.exception.*;
+import medialab.minesweeper.exception.InvalidDescriptionException;
+import medialab.minesweeper.exception.InvalidValueException;
 
 import java.nio.file.InvalidPathException;
 import java.util.ArrayList;
@@ -16,8 +17,6 @@ public class GameConfigFileParser extends FileParser {
 
     /**
      * @param fileName Path of the configuration file on the system.
-     * @throws InvalidDescriptionException
-     * @throws InvalidValueException
      */
     public GameConfigFileParser(String fileName) throws InvalidPathException, InvalidDescriptionException, InvalidValueException {
         super(fileName);
@@ -26,17 +25,13 @@ public class GameConfigFileParser extends FileParser {
 
     /**
      * Checks for game values validity and updates the gameConfig object.
-     *
-     * @throws InvalidValueException
-     * @throws InvalidDescriptionException
      */
     private void parseGameConfig() throws InvalidValueException, InvalidDescriptionException {
         ArrayList<String> data;
         int difficulty, numOfNukes, maxTime, hasSupernuke;
 
         try {
-            if ((data = this.getLines()).size() != 4)
-                throw new Exception();
+            if ((data = this.getLines()).size() != 4) throw new Exception();
 
             difficulty = Integer.parseInt(data.get(0));
             numOfNukes = Integer.parseInt(data.get(1));

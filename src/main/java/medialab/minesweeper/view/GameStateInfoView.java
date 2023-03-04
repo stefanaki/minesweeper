@@ -12,7 +12,6 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import medialab.minesweeper.Main;
 import medialab.minesweeper.model.GameBoardModel;
-import medialab.minesweeper.model.PreviousRoundsModel;
 
 public class GameStateInfoView implements View {
     private final GameBoardModel gameBoardModel;
@@ -22,7 +21,7 @@ public class GameStateInfoView implements View {
 
     private final VBox root;
 
-    private Timeline timeline;
+    private final Timeline timeline;
 
     public GameStateInfoView(GameBoardModel model) {
         this.gameBoardModel = model;
@@ -54,7 +53,6 @@ public class GameStateInfoView implements View {
         updateView();
     }
 
-    @Override
     public void updateView() {
         if (gameBoardModel.hasWon()) {
             timerLabel.setText("YOU WIN!");
